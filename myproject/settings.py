@@ -76,14 +76,16 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+import os
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'assetdb',  # your database name
+        'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'admin123',
-        'HOST': 'localhost',
-        'PORT': '5433',
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5433'),
     }
 }
 
